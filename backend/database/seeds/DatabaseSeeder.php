@@ -47,12 +47,6 @@ class DatabaseSeeder extends Seeder {
 				'value' => 'standard'
 			]
 		);
-		DB::table('tbl_insurance_company')->insert(			
-			[
-				'label' => 'Compreline',
-				'value' => 'compreline'
-			]
-		);
 	}
 	
 	
