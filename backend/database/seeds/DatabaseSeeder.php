@@ -23,6 +23,36 @@ class DatabaseSeeder extends Seeder {
 				'email' => 'compreline@yahoo.com',
 				'password' => md5('Admin123')		
 		]);
+
+
+
+
+		// Insurance Company
+		DB::table('tbl_insurance_company')->truncate();
+		DB::table('tbl_insurance_company')->insert(
+			[
+				'label' => 'FPG',
+				'value' => 'fpg'
+			]
+		);
+		DB::table('tbl_insurance_company')->insert(
+			[
+				'label' => 'Peoples',
+				'value' => 'peoples'
+			]
+		);
+		DB::table('tbl_insurance_company')->insert(			
+			[
+				'label' => 'Standard',
+				'value' => 'standard'
+			]
+		);
+		DB::table('tbl_insurance_company')->insert(			
+			[
+				'label' => 'Compreline',
+				'value' => 'compreline'
+			]
+		);
 	}
 	
 	

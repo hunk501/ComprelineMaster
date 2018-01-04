@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\MdlPolicyLedger;
+use App\Models\InsuranceCompany;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
@@ -75,8 +76,8 @@ class PolicyLedger extends Controller {
      *
      * @return Response
      */
-    public function create() {
-        return view('policy_ledger.create');
+    public function create() {        
+        return view('policy_ledger.create')->with(['insurance_company'=>$insurance_company]);
     }
 
     /**
@@ -323,8 +324,11 @@ class PolicyLedger extends Controller {
             // CV
             $cv = DB::table("tbl_check_voucher")->where("ledger_id", $record->id)->get();
             $record['cv_no'] = (!empty($cv)) ? $cv : "";
+
+            $insurance_company = InsuranceCompany::all()->toArray();
+
             //dd($record->toArray());
-            return view('account.policy_edit')->with(['record'=>$record->toArray(),'id'=>$id]);
+            return view('account.policy_edit')->with(['record'=>$record->toArray(),'id'=>$id,'insurance_company'=>$insurance_company]);
         }       
     }
 

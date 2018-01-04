@@ -136,9 +136,15 @@
                                             <label>Insurance Comp.</label>
                                             <label class="checkbox-inline">
                                                 <select name="insurance_company" class="form-control" value="{{ $record['insurance_company'] }}">
-                                                    <option>FPG</option>
-                                                    <option>Peoples</option>
-                                                    <option>Standard</option>                                        
+                                                    @if(!empty($insurance_company))
+                                                        @foreach($insurance_company as $value)
+                                                            @if($value['value'] == strtolower($record['insurance_company']))
+                                                                <option value="{{ $value['value'] }}" selected>{{ $value['label'] }}</option>
+                                                            @else
+                                                                <option value="{{ $value['value'] }}">{{ $value['label'] }}</option>
+                                                            @endif
+                                                        @endforeach
+                                                    @endif                                    
                                                 </select>
                                                 @if($errors->has('insurance_company'))
                                                 <p class="help-block">{{ $errors->first('insurance_company') }}</p>

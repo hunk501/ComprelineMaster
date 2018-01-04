@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\MdlPolicy;
 use App\Models\MdlPolicyLedger;
+use App\Models\InsuranceCompany;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
@@ -75,7 +76,10 @@ class Policy extends Controller {
      * @return Response
      */
     public function create() {
-        return view('account.demo');
+        
+        $insurance_company = InsuranceCompany::all()->toArray();        
+
+        return view('account.demo')->with(['insurance_company'=>$insurance_company]);
     }
 
     /**
