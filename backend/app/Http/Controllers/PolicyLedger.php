@@ -504,10 +504,10 @@ class PolicyLedger extends Controller {
         return [
             'date_issue' => 'required',
             'assured_name' => 'required',                       
-            'policy_no' => 'required|unique:tbl_policy_ledger,policy_no',                   
+            'policy_no' => 'required', // 'required|unique:tbl_policy_ledger,policy_no'
             'inception_date_from' => 'required',
             'inception_date_to' => 'required',
-			'motor_engine' => 'unique:tbl_policy_ledger,motor_engine'
+			'motor_engine' => 'required' //'unique:tbl_policy_ledger,motor_engine'
         ];
     }
     
